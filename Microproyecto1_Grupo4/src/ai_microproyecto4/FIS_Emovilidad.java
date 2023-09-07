@@ -5,17 +5,18 @@
 package ai_microproyecto4;
 
 import net.sourceforge.jFuzzyLogic.FIS;
+import net.sourceforge.jFuzzyLogic.plot.JFuzzyChart;
 
         
 /**
  *
  * @author julian
  */
-public class FIS_system {
-    private String path_FIS = "src/ai_microproyecto4/FIS_source.fcl";
+public class FIS_Emovilidad {
+    private String path_FIS = "src/ai_microproyecto4/FIS_EMovilidad.fcl";
     private FIS fis_var;
     
-    public FIS_system(){
+    public FIS_Emovilidad(){
         this.fis_var = FIS.load(this.path_FIS, true);
    
         if(this.fis_var == null){
@@ -32,8 +33,9 @@ public class FIS_system {
         this.fis_var.setVariable("presupuesto", presupuesto);
         this.fis_var.setVariable("hora", hora);
         
+
         this.fis_var.evaluate();
-        
+        //JFuzzyChart.get().chart(fis_var.getFunctionBlock("emisiones"));
         return this.fis_var.getVariable("emisiones").getLatestDefuzzifiedValue();
     }
     
@@ -44,6 +46,11 @@ public class FIS_system {
         this.fis_var.setVariable("hora", hora);
         
         this.fis_var.evaluate();
+        
+        JFuzzyChart.get().chart(this.fis_var.getVariable("cantidad"), true);
+        JFuzzyChart.get().chart(this.fis_var.getVariable("distancia"), true);
+        JFuzzyChart.get().chart(this.fis_var.getVariable("presupuesto"), true);
+        JFuzzyChart.get().chart(this.fis_var.getVariable("hora"), true);
         
         return this.fis_var.getVariable("disponsibilidad").getLatestDefuzzifiedValue();
     }
@@ -73,6 +80,8 @@ public class FIS_system {
                   }
             }
         }
+        
+        JFuzzyChart.get().chart(this.fis_var.getVariable("emisiones"), true);
         result_emisiones = CD_salida_emisiones[max_index];
         //only for debug reasons:
         //System.out.println("Analysis:");
@@ -106,6 +115,8 @@ public class FIS_system {
                   }
             }
         }
+        
+        JFuzzyChart.get().chart(this.fis_var.getVariable("disponsibilidad"), true);
         result_disponsibilidad = CD_salida_disponsibilidad[max_index];
         //only for debug reasons:
         //System.out.println("Analysis:");
