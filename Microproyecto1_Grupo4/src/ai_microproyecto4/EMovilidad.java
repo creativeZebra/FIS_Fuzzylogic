@@ -4,21 +4,21 @@
  */
 package ai_microproyecto4;
 
-import ai_microproyecto4.FIS_system;
+import ai_microproyecto4.FIS_Emovilidad;
 import java.util.Scanner;
 
 /**
  *
  * @author julian
  */
-public class AI_Microproyecto1 {
+public class EMovilidad {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        FIS_system fis = new FIS_system();
+        FIS_Emovilidad fis = new FIS_Emovilidad();
         
         System.out.println("Microproyecto 1 - FIS con jFuzzyLogic:");
         System.out.println("Ingrese la CANTIDAD de personas1 (1-50)");

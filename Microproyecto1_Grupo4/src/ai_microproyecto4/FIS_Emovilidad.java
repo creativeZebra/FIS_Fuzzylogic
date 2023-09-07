@@ -12,11 +12,11 @@ import net.sourceforge.jFuzzyLogic.plot.JFuzzyChart;
  *
  * @author julian
  */
-public class FIS_system {
-    private String path_FIS = "src/ai_microproyecto4/FIS_source.fcl";
+public class FIS_Emovilidad {
+    private String path_FIS = "src/ai_microproyecto4/FIS_EMovilidad.fcl";
     private FIS fis_var;
     
-    public FIS_system(){
+    public FIS_Emovilidad(){
         this.fis_var = FIS.load(this.path_FIS, true);
    
         if(this.fis_var == null){
